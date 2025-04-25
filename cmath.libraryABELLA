@@ -1,0 +1,86 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+    int choice;
+    double num, b;
+
+    do {
+        cout << "\n===== Math Menu =====\n";
+        cout << "1. Square Root\n";
+        cout << "2. Power\n";
+        cout << "3. Trigonometry\n";
+        cout << "4. Rounding (ceil, floor, round)\n";
+        cout << "5. Logarithms\n";
+        cout << "6. Absolute Value\n";
+        cout << "0. Exit\n";
+        cout << "Choose an option: ";
+        cin >> choice;
+
+        if (cin.fail()) {
+            cout << "Invalid input.\n";
+            cin.clear();
+            cin.ignore(1000, '\n');
+            continue;
+        }
+
+        if (choice == 0) break;
+
+        cout << "Enter number: ";
+        cin >> num;
+
+        if (cin.fail()) {
+            cout << "Invalid input.\n";
+            cin.clear();
+            cin.ignore(1000, '\n');
+            continue;
+        }
+
+        switch (choice) {
+            case 1:
+                if (num >= 0)
+                    cout << "Square root: " << sqrt(num) << endl;
+                else
+                    cout << "Cannot take square root of negative number.\n";
+                break;
+            case 2:
+                cout << "Enter exponent: ";
+                cin >> b;
+                if (!cin.fail())
+                    cout << num << " ^ " << b << " = " << pow(num, b) << endl;
+                else {
+                    cout << "Invalid exponent input.\n";
+                    cin.clear();
+                    cin.ignore(1000, '\n');
+                }
+                break;
+            case 3:
+                cout << "Sine: " << sin(num) << endl;
+                cout << "Cosine: " << cos(num) << endl;
+                cout << "Tangent: " << tan(num) << endl;
+                break;
+            case 4:
+                cout << "Ceil: " << ceil(num) << endl;
+                cout << "Floor: " << floor(num) << endl;
+                cout << "Round: " << round(num) << endl;
+                break;
+            case 5:
+                if (num > 0) {
+                    cout << "Natural log: " << log(num) << endl;
+                    cout << "Base-10 log: " << log10(num) << endl;
+                } else
+                    cout << "Logarithm only works for positive numbers.\n";
+                break;
+            case 6:
+                cout << "Absolute value: " << fabs(num) << endl;
+                break;
+            default:
+                cout << "Invalid choice.\n";
+        }
+    } while (true);
+
+    cout << "Program ended.\n";
+    return 0;
+}
